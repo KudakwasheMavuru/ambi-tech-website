@@ -12,6 +12,7 @@ export const nav: {
   links: [
     { label: "Solutions", href: "/#solutions" },
     { label: "Projects", href: "/projects" },
+    { label: "Education", href: "/education" },
     { label: "Team", href: "/team" },
     { label: "News", href: "/news" },
     { label: "Contact", href: "/contact" },
@@ -45,7 +46,9 @@ export const partners = {
   eyebrow: "Trusted by",
   logos: [
     { name: "Rwanda Revenue Authority", src: "/partners/rra.png" },
+    { name: "Bank of Kigali", src: "/partners/bank-of-kigali.png" },
     { name: "BPR Bank", src: "/partners/bpr-bank.png" },
+    { name: "RSwitch", src: "/partners/rswitch.png" },
     { name: "QT Global Software", src: "/partners/qt-global.png" },
     { name: "UB-Tech", src: "/partners/ub-tech.png" },
     { name: "eKash", src: "/partners/ekash.png" },
@@ -138,7 +141,7 @@ export const projects: {
       subtitle: "VAT Formalisation Programme",
       partner: "Rwanda Revenue Authority",
       tint: "teal",
-      image: "/images/kigali-daylight.jpg",
+      image: "/images/tengamara-hero.jpg",
       summary:
         "Turns VAT compliance from an obligation into an incentive, rewarding consumers for requesting an electronic invoice and pulling transactions into the formal tax net.",
       intro:
@@ -167,7 +170,7 @@ export const projects: {
       subtitle: "Consumer Loyalty & Rewards",
       partner: null,
       tint: "aqua",
-      image: "/images/card-payment.jpg",
+      image: "/images/tengapromo-hero.jpg",
       summary:
         "The engine that makes formalisation feel like a benefit, not a burden: a loyalty and lottery platform that turns a receipt into a chance and a habit into a reward.",
       intro:
@@ -186,7 +189,7 @@ export const projects: {
       subtitle: "Digital Wallet & Financial Services",
       partner: null,
       tint: "teal",
-      image: "/images/kigali-skyline-photo.jpg",
+      image: "/images/enoti-hero.jpg",
       summary:
         "Where the value lands: a digital wallet built for the African market, receiving VAT cashback and building a financial identity from transactions already being made.",
       intro:
@@ -202,7 +205,7 @@ export const collaborate = {
   heading: "Let's Collaborate",
   proven: {
     heading: "A Proven Partner",
-    body: "Our experience spans high-stakes industries: Finance & Banking, Telecommunications, Government & Defense, Healthcare, Energy & Utilities. Through our partnership with ENKI WhiteHat, we've executed 85+ enterprise-level projects, including red team operations, vulnerability assessments across mobile/cloud/IoT, and security audits for AI, smart appliances and robotic systems.",
+    body: "Our experience spans high-stakes industries: Finance & Banking, Telecommunications, Government & Defense, Healthcare, and Energy & Utilities. We bring together certified specialists and a vetted partner network to deliver enterprise-grade work, from security assessments and vulnerability testing across mobile, cloud and IoT, to audits for AI systems, smart devices and connected infrastructure.",
     industries: [
       "Finance & Banking",
       "Telecommunications",
@@ -216,7 +219,7 @@ export const collaborate = {
     points: [
       {
         title: "Elite Expertise",
-        body: "Certified professionals and award-winning ethical hackers.",
+        body: "Certified professionals with deep cybersecurity and public-sector delivery experience.",
       },
       {
         title: "Tangible Results",
@@ -329,13 +332,14 @@ export type NewsItem = {
   date: string | null;
   href: string;
   summary: string;
+  image: string;
   featuredIn?: { label: string; href: string }[];
 };
 
 export const newsPage = {
   eyebrow: "In the News",
   heading: "Where AMBI Tech has been featured",
-  sub: "Coverage of TENGAMARA na TVA and our work with the Rwanda Revenue Authority, newest first.",
+  sub: "Media coverage and updates from across our work, newest first.",
   items: [
     {
       title: "Tengamara na TVA: Turning Consumers into Champions of Tax Compliance",
@@ -344,6 +348,7 @@ export const newsPage = {
       href: "https://taarifa.rw/2026/03/09/tengamara-na-tva-turning-consumers-into-champions-of-tax-compliance/",
       summary:
         "Rwanda's VAT rewards scheme incentivises consumers to request electronic invoices with 10% cashback, turning tax compliance into a shared responsibility.",
+      image: "/images/tengamara-hero.jpg",
     },
     {
       title: "Tengamara: How reward initiatives are transforming VAT compliance",
@@ -352,6 +357,7 @@ export const newsPage = {
       href: "https://www.newtimes.co.rw/article/31520/news/featured/tengamara-how-reward-initiatives-are-transforming-vat-compliance",
       summary:
         "Featuring a Bugesera District winner of a Kia Sorento through TengaPromo, on how incentive-based rewards are improving tax compliance.",
+      image: "/images/tengapromo-hero.jpg",
       featuredIn: [{ label: "AllAfrica", href: "https://allafrica.com/stories/202511260162.html" }],
     },
     {
@@ -360,6 +366,7 @@ export const newsPage = {
       date: null,
       href: "https://www.igihe.com/amakuru/u-rwanda/article/imbamutima-z-abamaze-kwegukana-ibihembo-muri-tengamara-na-tva",
       summary: "Testimonies from Rwandans who have already won prizes through Tengamara na TVA.",
+      image: "/gallery/tengapromo/photo-01.jpg",
     },
     {
       title: "More rewards for final consumers as new EBM invoice promo launches",
@@ -368,8 +375,51 @@ export const newsPage = {
       href: "https://www.rra.gov.rw/en/details?tx_news_pi1%5Baction%5D=detail&tx_news_pi1%5Bcontroller%5D=News&tx_news_pi1%5Bnews%5D=2801&cHash=6cedd4b6717f6a44be01788d7075aaeb",
       summary:
         "RRA launches TengaPromo with QT Global Software and AMBI Tech, offering weekly cash prizes up to RWF 1 million for consumers who request electronic invoices.",
+      image: "/gallery/tengapromo/photo-09.jpg",
     },
   ] satisfies NewsItem[],
+  socials: {
+    heading: "Around our socials",
+    links: [
+      { label: "Instagram @tenga_promo", href: "https://www.instagram.com/tenga_promo/" },
+      { label: "X @ikubirelotto", href: "https://x.com/ikubirelotto" },
+    ],
+  },
+};
+
+export const educationPage = {
+  eyebrow: "Education & Capacity Building",
+  heading: "Understanding Why It Matters",
+  sub: "Asking for your receipt takes five seconds. Here's why it's worth it.",
+  vat: {
+    heading: "What is VAT?",
+    body: "VAT, Value Added Tax, is a small amount added to the price of most things you buy. The shop collects it on behalf of the government. But it only reaches the government if the sale is recorded on a proper EBM receipt. No receipt, no record.",
+  },
+  whyReceiptMatters: {
+    heading: "Why your receipt matters",
+    body: "That receipt is what turns your everyday purchase into a contribution to the country. VAT funds roads, schools, clinics and the services we all use. When you ask for a receipt, you're making sure the money you already paid actually gets where it's meant to go.",
+  },
+  rewards: {
+    heading: "How TENGAMARA na TVA rewards you",
+    body: "We wanted asking for a receipt to be worth something to you too. So every EBM receipt you collect earns you cashback in your eNoti wallet, money back on shopping you were doing anyway.",
+  },
+  tengaPromo: {
+    heading: "And TengaPromo makes it fun",
+    body: "Every receipt also becomes an entry into TengaPromo, our rewards and lottery programme. More receipts, more chances to win.",
+  },
+  scale: {
+    heading: "Your Receipt Is Small. Together, They're Not.",
+    lead: "One EBM receipt might carry a few hundred francs of VAT. On its own, that's nothing, it won't build anything. But you're not on your own.",
+    body: "Rwandans have already collected 5.3 million receipts through TENGAMARA na TVA. Together, those small amounts have put RWF 39.3 billion into the national purse, money that was always owed, but wasn't always arriving. That's classrooms. That's health centres. That's roads.",
+    stats: [
+      { value: 5.3, suffix: "M+", isDecimal: true, label: "Receipts collected" },
+      { value: 39.3, prefix: "RWF ", suffix: "B", isDecimal: true, label: "Put into the national purse" },
+    ],
+  },
+  flow: ["Buy", "Ask for your receipt", "Get rewarded", "Everybody wins"],
+  flowNote:
+    "You get cashback and a chance to win. The shop stays compliant. The country builds.",
+  cta: { label: "Learn more about TENGAMARA na TVA", href: "/projects/tengamara-na-tva" },
 };
 
 export const appLinks = {
@@ -428,6 +478,7 @@ export const footer = {
     email: "info@ambi-tech.rw",
   },
   socials: [
+    { label: "Instagram", href: "https://www.instagram.com/ambi_tech.rw/" },
     { label: "LinkedIn", href: "#" },
     { label: "X", href: "#" },
   ],

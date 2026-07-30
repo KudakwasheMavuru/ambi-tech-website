@@ -3,7 +3,7 @@ import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/cn";
 import type { ButtonHTMLAttributes } from "react";
 
-type ButtonVariant = "primary" | "secondary" | "ghost-light";
+type ButtonVariant = "primary" | "secondary" | "ghost-light" | "inverse";
 
 const base =
   "group/btn inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold tracking-tight transition-all duration-200 focus-visible:outline-2 focus-visible:outline-offset-2";
@@ -15,6 +15,8 @@ const variants: Record<ButtonVariant, string> = {
     "border border-teal-deep/30 text-teal-deep bg-white/40 hover:bg-teal-deep/5 hover:border-teal-deep/60",
   "ghost-light":
     "border border-white/30 text-white bg-white/5 hover:bg-white/15 hover:border-white/50",
+  inverse:
+    "bg-white text-teal-deep shadow-[0_10px_24px_-10px_rgba(0,0,0,0.25)] hover:bg-white/90 hover:shadow-[0_14px_28px_-10px_rgba(255,255,255,0.4)]",
 };
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {

@@ -13,13 +13,16 @@ export function LogoMarquee() {
           </p>
           <Marquee>
             {partners.logos.map((logo) => (
-              <div key={logo.name} className="flex h-12 w-auto items-center justify-center px-2 opacity-70 grayscale transition-all duration-300 hover:opacity-100 hover:grayscale-0">
+              <div
+                key={logo.name}
+                className="flex h-12 w-28 shrink-0 items-center justify-center px-2 opacity-70 grayscale transition-all duration-300 hover:opacity-100 hover:grayscale-0 sm:h-14 sm:w-32"
+              >
                 <Image
                   src={logo.src}
                   alt={logo.name}
                   width={160}
                   height={48}
-                  className="h-9 w-auto object-contain sm:h-11"
+                  className="h-full w-full object-contain"
                 />
               </div>
             ))}

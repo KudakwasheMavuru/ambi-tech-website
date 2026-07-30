@@ -1,12 +1,14 @@
 import Link from "next/link";
+import Image from "next/image";
 import { MapPin, Phone, Mail, X as XIcon } from "lucide-react";
-import { LinkedInIcon, AppleIcon, GooglePlayIcon } from "@/components/ui/icons";
+import { LinkedInIcon, InstagramIcon, AppleIcon, GooglePlayIcon } from "@/components/ui/icons";
 import { footer, appLinks } from "@/content/site";
 import type { ComponentType, SVGProps } from "react";
 
 const socialIcons: Record<string, ComponentType<SVGProps<SVGSVGElement>>> = {
   LinkedIn: LinkedInIcon,
   X: XIcon,
+  Instagram: InstagramIcon,
 };
 
 export function Footer() {
@@ -16,8 +18,14 @@ export function Footer() {
     <footer className="bg-teal-deep text-white">
       <div className="container-ambi grid grid-cols-1 gap-12 py-16 sm:py-20 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
         <div>
-          <Link href="/" className="font-display text-2xl font-semibold tracking-tight">
-            AMBI<span className="text-aqua">tech</span>
+          <Link href="/" className="inline-block">
+            <Image
+              src="/logo/ambitech-logo-white.png"
+              alt="AMBI Tech"
+              width={170}
+              height={92}
+              className="h-10 w-auto"
+            />
           </Link>
           <p className="mt-4 max-w-xs text-sm leading-relaxed text-white/70">
             {footer.tagline}

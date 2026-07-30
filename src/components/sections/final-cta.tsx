@@ -28,11 +28,7 @@ export function FinalCta() {
           </p>
           <div className="mt-9 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Magnetic>
-              <Button
-                href={finalCta.ctaPrimary.href}
-                variant="primary"
-                className="bg-white text-teal-deep hover:bg-white/90 hover:shadow-[0_14px_28px_-10px_rgba(255,255,255,0.4)]"
-              >
+              <Button href={finalCta.ctaPrimary.href} variant="inverse">
                 {finalCta.ctaPrimary.label}
               </Button>
             </Magnetic>

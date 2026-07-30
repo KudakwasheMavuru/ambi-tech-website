@@ -3,15 +3,21 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import { nav } from "@/content/site";
 import { cn } from "@/lib/cn";
 import { Button } from "@/components/ui/button";
 
+const DARK_HERO_ROUTES = ["/", "/news", "/education"];
+
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
+  const darkHero =
+    DARK_HERO_ROUTES.includes(pathname) || pathname.startsWith("/projects");
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -27,20 +33,22 @@ export function Nav() {
     };
   }, [open]);
 
+  const solid = scrolled || open || !darkHero;
+
   return (
     <header className="fixed inset-x-0 top-0 z-50">
       <div className="container-ambi pt-4">
         <div
           className={cn(
             "flex items-center justify-between rounded-2xl px-4 py-2.5 transition-all duration-300 sm:px-5",
-            scrolled || open
+            solid
               ? "border border-white/70 bg-white/90 shadow-[0_8px_30px_-12px_rgba(14,42,48,0.18)] backdrop-blur-xl"
-              : "border border-transparent bg-transparent"
+              : "border border-white/15 bg-black/10 backdrop-blur-md"
           )}
         >
           <Link href="/" className="flex items-center gap-2" onClick={() => setOpen(false)}>
             <Image
-              src="/logo/ambitech-logo-transparent.png"
+              src={solid ? "/logo/ambitech-logo-transparent.png" : "/logo/ambitech-logo-white.png"}
               alt="AMBI Tech"
               width={170}
               height={92}
@@ -54,7 +62,10 @@ export function Nav() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-sm font-medium text-ink/80 transition-colors hover:text-teal-deep"
+                className={cn(
+                  "text-sm font-medium transition-colors",
+                  solid ? "text-ink/80 hover:text-teal-deep" : "text-white/90 hover:text-white"
+                )}
               >
                 {link.label}
               </Link>
@@ -69,7 +80,10 @@ export function Nav() {
 
           <button
             type="button"
-            className="relative z-10 inline-flex size-11 items-center justify-center rounded-full text-ink md:hidden"
+            className={cn(
+              "relative z-10 inline-flex size-11 items-center justify-center rounded-full md:hidden",
+              solid ? "text-ink" : "text-white"
+            )}
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
             onClick={() => setOpen((v) => !v)}

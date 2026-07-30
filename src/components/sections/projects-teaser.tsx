@@ -41,11 +41,6 @@ export function ProjectsTeaser() {
                           "linear-gradient(180deg, rgba(22,98,114,0.05) 0%, rgba(22,98,114,0.5) 100%)",
                       }}
                     />
-                    {project.partner && (
-                      <span className="absolute bottom-3 left-4 text-xs font-semibold uppercase tracking-[0.1em] text-white/90">
-                        {project.partner}
-                      </span>
-                    )}
                   </div>
                   <div className="flex flex-1 flex-col p-6">
                     <div className="flex items-start justify-between gap-3">
