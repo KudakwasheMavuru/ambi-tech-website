@@ -1,10 +1,13 @@
 import { MapPin, ArrowUpRight } from "lucide-react";
+import { contactPage } from "@/content/site";
 
-// TODO(client): swap for a real Google Maps embed (iframe with the office's place ID) once the exact address is confirmed.
+// TODO(client): swap for a real Google Maps embed (iframe with the office's place ID) once confirmed.
 export function MapPlaceholder() {
+  const query = encodeURIComponent(contactPage.details.location);
+
   return (
     <a
-      href="https://www.google.com/maps/search/?api=1&query=Kigali%2C+Rwanda"
+      href={`https://www.google.com/maps/search/?api=1&query=${query}`}
       target="_blank"
       rel="noopener noreferrer"
       className="group/map relative flex aspect-[16/10] w-full items-end overflow-hidden rounded-2xl border border-teal-mid/15"
@@ -44,10 +47,10 @@ export function MapPlaceholder() {
 
       <div className="relative flex w-full items-center justify-between gap-3 bg-gradient-to-t from-white/90 to-white/0 p-5">
         <span className="inline-flex items-center gap-2 text-sm font-semibold text-teal-deep">
-          <MapPin className="size-4" aria-hidden="true" />
-          Kigali, Rwanda
+          <MapPin className="size-4 shrink-0" aria-hidden="true" />
+          {contactPage.details.location}
         </span>
-        <span className="inline-flex items-center gap-1 text-xs font-medium text-teal-mid transition-transform group-hover/map:translate-x-0.5">
+        <span className="inline-flex shrink-0 items-center gap-1 text-xs font-medium text-teal-mid transition-transform group-hover/map:translate-x-0.5">
           Open in Maps
           <ArrowUpRight className="size-3.5" aria-hidden="true" />
         </span>

@@ -1,8 +1,9 @@
 import { Wallet, Landmark, ShieldCheck, Layers } from "lucide-react";
 import { services } from "@/content/site";
-import { GlassCard } from "@/components/ui/glass-card";
 import { SectionHeading } from "@/components/ui/section-heading";
-import { RevealGroup, RevealItem } from "@/components/ui/reveal";
+import { GlassCard } from "@/components/ui/glass-card";
+import { Reveal, RevealGroup, RevealItem } from "@/components/ui/reveal";
+import { ScrollScale } from "@/components/ui/scroll-scale";
 
 const icons = [Wallet, Landmark, ShieldCheck, Layers];
 
@@ -10,12 +11,14 @@ export function Services() {
   return (
     <section id="solutions" className="relative bg-surface-tint py-24 sm:py-32">
       <div className="container-ambi">
-        <SectionHeading
-          eyebrow={services.eyebrow}
-          heading={services.heading}
-          align="center"
-          className="mx-auto"
-        />
+        <Reveal>
+          <SectionHeading
+            eyebrow={services.eyebrow}
+            heading={services.heading}
+            align="center"
+            className="mx-auto"
+          />
+        </Reveal>
 
         <RevealGroup
           className="mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4"
@@ -24,19 +27,21 @@ export function Services() {
           {services.items.map((item, i) => {
             const Icon = icons[i];
             return (
-              <RevealItem key={item.number}>
-                <GlassCard className="flex h-full flex-col">
-                  <div className="flex items-center justify-between">
-                    <span className="font-display text-xs font-semibold tracking-[0.1em] text-teal-mid">
-                      {item.number}
-                    </span>
-                    <Icon className="size-6 text-teal-deep" aria-hidden="true" />
-                  </div>
-                  <h3 className="mt-5 font-display text-lg font-semibold leading-snug text-ink">
-                    {item.title}
-                  </h3>
-                  <p className="mt-3 text-sm leading-relaxed text-muted">{item.body}</p>
-                </GlassCard>
+              <RevealItem key={item.number} className="h-full">
+                <ScrollScale from={0.94} className="h-full">
+                  <GlassCard className="flex h-full flex-col">
+                    <div className="flex items-center justify-between">
+                      <span className="font-display text-xs font-semibold tracking-[0.1em] text-teal-mid">
+                        {item.number}
+                      </span>
+                      <Icon className="size-6 text-teal-deep" aria-hidden="true" />
+                    </div>
+                    <h3 className="mt-5 font-display text-lg font-semibold leading-snug text-ink">
+                      {item.title}
+                    </h3>
+                    <p className="mt-3 text-sm leading-relaxed text-muted">{item.body}</p>
+                  </GlassCard>
+                </ScrollScale>
               </RevealItem>
             );
           })}

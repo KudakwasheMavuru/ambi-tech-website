@@ -1,34 +1,19 @@
 "use client";
 
 import { useRef } from "react";
+import Image from "next/image";
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
-import { ReceiptText, Gift, Wallet, Building2, type LucideIcon } from "lucide-react";
 import { cn } from "@/lib/cn";
 import { Button } from "@/components/ui/button";
 import { Reveal } from "@/components/ui/reveal";
-import type { projects } from "@/content/site";
-
-const projectIcons: Record<string, LucideIcon> = {
-  tengamara: ReceiptText,
-  tengapromo: Gift,
-  enoti: Wallet,
-  sora: Building2,
-};
-
-type Project = (typeof projects)["items"][number];
+import type { Project } from "@/content/site";
 
 export function ProjectCard({ project, index }: { project: Project; index: number }) {
   const reversed = index % 2 === 1;
-  const Icon = projectIcons[project.id] ?? Building2;
   const ref = useRef<HTMLDivElement>(null);
   const reduceMotion = useReducedMotion();
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
   const y = useTransform(scrollYProgress, [0, 1], reduceMotion ? [0, 0] : [-24, 24]);
-
-  const tintClass =
-    project.tint === "teal"
-      ? "from-teal-deep to-teal-mid"
-      : "from-teal-mid to-aqua";
 
   return (
     <div
@@ -40,14 +25,23 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
     >
       <Reveal>
         <div className="glass overflow-hidden rounded-2xl p-2">
-          <motion.div
-            style={{ y }}
-            className={cn(
-              "flex aspect-[4/3] items-center justify-center rounded-xl bg-gradient-to-br",
-              tintClass
-            )}
-          >
-            <Icon className="size-16 text-white/85" strokeWidth={1.4} aria-hidden="true" />
+          <motion.div style={{ y }} className="relative aspect-[4/3] overflow-hidden rounded-xl">
+            <Image
+              src={project.image}
+              alt=""
+              fill
+              sizes="(min-width: 1024px) 45vw, 90vw"
+              className="scale-110 object-cover"
+            />
+            <div
+              className="absolute inset-0"
+              style={{
+                background:
+                  project.tint === "teal"
+                    ? "linear-gradient(160deg, rgba(22,98,114,0.75) 0%, rgba(94,145,153,0.35) 100%)"
+                    : "linear-gradient(160deg, rgba(94,145,153,0.7) 0%, rgba(143,210,215,0.35) 100%)",
+              }}
+            />
           </motion.div>
         </div>
       </Reveal>
@@ -62,9 +56,9 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
           {project.name}
         </h3>
         <p className="mt-1 text-sm font-medium text-muted">{project.subtitle}</p>
-        <p className="mt-5 text-base leading-relaxed text-muted">{project.body}</p>
+        <p className="mt-5 text-base leading-relaxed text-muted">{project.summary}</p>
 
-        {"tags" in project && project.tags && (
+        {project.tags && (
           <ul className="mt-5 flex flex-wrap gap-2">
             {project.tags.map((tag) => (
               <li
@@ -78,7 +72,7 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
         )}
 
         <div className="mt-7">
-          <Button href={project.cta.href} variant="secondary">
+          <Button href={`/projects/${project.id}`} variant="secondary">
             {project.cta.label}
           </Button>
         </div>

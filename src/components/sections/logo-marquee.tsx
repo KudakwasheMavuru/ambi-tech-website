@@ -1,0 +1,31 @@
+import Image from "next/image";
+import { partners } from "@/content/site";
+import { Marquee } from "@/components/ui/marquee";
+import { Reveal } from "@/components/ui/reveal";
+
+export function LogoMarquee() {
+  return (
+    <section className="border-y border-teal-mid/10 bg-surface-tint py-10 sm:py-12">
+      <div className="container-ambi">
+        <Reveal>
+          <p className="mb-8 text-center text-xs font-semibold uppercase tracking-[0.16em] text-teal-mid">
+            {partners.eyebrow}
+          </p>
+          <Marquee>
+            {partners.logos.map((logo) => (
+              <div key={logo.name} className="flex h-12 w-auto items-center justify-center px-2 opacity-70 grayscale transition-all duration-300 hover:opacity-100 hover:grayscale-0">
+                <Image
+                  src={logo.src}
+                  alt={logo.name}
+                  width={160}
+                  height={48}
+                  className="h-9 w-auto object-contain sm:h-11"
+                />
+              </div>
+            ))}
+          </Marquee>
+        </Reveal>
+      </div>
+    </section>
+  );
+}

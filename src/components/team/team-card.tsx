@@ -20,7 +20,7 @@ export function TeamCard({ member }: { member: Member }) {
   const isPlaceholder = member.name.startsWith("[");
 
   return (
-    <GlassCard className="flex flex-col items-center text-center">
+    <GlassCard className="flex h-full flex-col items-center text-center">
       <div
         className="flex size-20 items-center justify-center rounded-full font-display text-xl font-semibold text-white"
         style={{

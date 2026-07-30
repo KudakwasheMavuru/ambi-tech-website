@@ -1,6 +1,8 @@
 import { finalCta } from "@/content/site";
 import { Button } from "@/components/ui/button";
 import { Reveal } from "@/components/ui/reveal";
+import { Magnetic } from "@/components/ui/magnetic";
+import { ParticleField } from "@/components/ui/particle-field";
 
 export function FinalCta() {
   return (
@@ -14,6 +16,7 @@ export function FinalCta() {
         className="animate-drift absolute -bottom-1/3 right-0 size-[30rem] rounded-full bg-teal-mid/30 blur-[120px]"
         style={{ animationDelay: "-10s" }}
       />
+      <ParticleField theme="light" density={0.00009} maxParticles={80} lineOpacity={0.14} dotOpacity={0.45} />
 
       <div className="container-ambi relative text-center">
         <Reveal className="mx-auto max-w-2xl">
@@ -24,9 +27,15 @@ export function FinalCta() {
             {finalCta.body}
           </p>
           <div className="mt-9 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Button href={finalCta.ctaPrimary.href} variant="primary" className="bg-white text-teal-deep hover:bg-white/90 hover:shadow-[0_14px_28px_-10px_rgba(255,255,255,0.4)]">
-              {finalCta.ctaPrimary.label}
-            </Button>
+            <Magnetic>
+              <Button
+                href={finalCta.ctaPrimary.href}
+                variant="primary"
+                className="bg-white text-teal-deep hover:bg-white/90 hover:shadow-[0_14px_28px_-10px_rgba(255,255,255,0.4)]"
+              >
+                {finalCta.ctaPrimary.label}
+              </Button>
+            </Magnetic>
             <Button href={finalCta.ctaSecondary.href} variant="ghost-light">
               {finalCta.ctaSecondary.label}
             </Button>

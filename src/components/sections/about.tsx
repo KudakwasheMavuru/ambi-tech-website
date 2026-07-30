@@ -1,58 +1,63 @@
 import { about } from "@/content/site";
-import { GlassCard } from "@/components/ui/glass-card";
-import { SkylinePlaceholder } from "@/components/ui/skyline-placeholder";
 import { Reveal, RevealGroup, RevealItem } from "@/components/ui/reveal";
 
 export function About() {
   return (
     <section id="about" className="relative py-24 sm:py-32">
       <div className="container-ambi">
-        <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-16">
-          <Reveal>
-            <span className="mb-3 inline-block text-xs font-semibold uppercase tracking-[0.16em] text-teal-mid">
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-10">
+          <Reveal className="lg:col-span-5">
+            <span className="mb-4 inline-block text-xs font-semibold uppercase tracking-[0.16em] text-teal-mid">
               {about.eyebrow}
             </span>
-            <h2 className="font-display text-3xl font-semibold leading-[1.1] tracking-tight text-ink sm:text-4xl">
+            <h2 className="font-display text-4xl font-bold leading-[1.02] tracking-tight text-balance text-ink sm:text-5xl lg:text-[3.25rem]">
               {about.heading}
             </h2>
-            <p className="mt-5 text-base leading-relaxed text-muted sm:text-lg">
-              {about.body}
-            </p>
-
-            <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2">
-              <div className="border-l-2 border-aqua pl-4">
-                <h3 className="font-display text-sm font-semibold uppercase tracking-[0.08em] text-teal-deep">
-                  {about.vision.label}
-                </h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted">{about.vision.body}</p>
-              </div>
-              <div className="border-l-2 border-aqua pl-4">
-                <h3 className="font-display text-sm font-semibold uppercase tracking-[0.08em] text-teal-deep">
-                  {about.mission.label}
-                </h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted">{about.mission.body}</p>
-              </div>
-            </div>
           </Reveal>
 
-          <Reveal delay={0.15} className="relative">
-            <SkylinePlaceholder className="aspect-[4/5] w-full overflow-hidden rounded-2xl shadow-[0_20px_50px_-20px_rgba(14,42,48,0.35)] lg:aspect-auto lg:h-full" />
+          <Reveal delay={0.1} className="lg:col-span-7 lg:pt-14">
+            <p className="max-w-xl text-base leading-relaxed text-muted sm:text-lg">
+              {about.body}
+            </p>
           </Reveal>
         </div>
 
         <RevealGroup
-          className="mt-20 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3"
-          stagger={0.08}
+          className="mt-16 grid grid-cols-1 gap-x-10 gap-y-10 border-t border-teal-mid/15 pt-14 sm:mt-20 sm:grid-cols-2 sm:pt-16"
+          stagger={0.1}
         >
-          {about.values.map((value) => (
-            <RevealItem key={value.name}>
-              <GlassCard className="h-full">
-                <h3 className="font-display text-lg font-semibold text-ink">{value.name}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted">{value.rationale}</p>
-              </GlassCard>
-            </RevealItem>
-          ))}
+          <RevealItem>
+            <span className="font-display text-xs font-semibold tracking-[0.14em] text-aqua">01</span>
+            <h3 className="mt-3 font-display text-xl font-semibold text-ink">
+              {about.vision.label}
+            </h3>
+            <p className="mt-3 max-w-sm text-base leading-relaxed text-muted">{about.vision.body}</p>
+          </RevealItem>
+          <RevealItem>
+            <span className="font-display text-xs font-semibold tracking-[0.14em] text-aqua">02</span>
+            <h3 className="mt-3 font-display text-xl font-semibold text-ink">
+              {about.mission.label}
+            </h3>
+            <p className="mt-3 max-w-sm text-base leading-relaxed text-muted">{about.mission.body}</p>
+          </RevealItem>
         </RevealGroup>
+
+        <div className="mt-16 border-t border-teal-mid/15 pt-10 sm:mt-20 sm:pt-12">
+          <RevealGroup className="flex flex-wrap items-baseline gap-x-3 gap-y-2 sm:gap-x-4" stagger={0.06}>
+            {about.values.map((value, i) => (
+              <RevealItem key={value} className="flex items-baseline">
+                <span className="font-display text-xl font-semibold tracking-tight text-ink sm:text-2xl">
+                  {value}
+                </span>
+                {i < about.values.length - 1 && (
+                  <span className="ml-3 text-aqua sm:ml-4" aria-hidden="true">
+                    &middot;
+                  </span>
+                )}
+              </RevealItem>
+            ))}
+          </RevealGroup>
+        </div>
       </div>
     </section>
   );

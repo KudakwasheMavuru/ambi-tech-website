@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { MapPin, Phone, Mail, X as XIcon } from "lucide-react";
-import { LinkedInIcon } from "@/components/ui/icons";
-import { footer } from "@/content/site";
+import { LinkedInIcon, AppleIcon, GooglePlayIcon } from "@/components/ui/icons";
+import { footer, appLinks } from "@/content/site";
 import type { ComponentType, SVGProps } from "react";
 
 const socialIcons: Record<string, ComponentType<SVGProps<SVGSVGElement>>> = {
@@ -36,6 +36,33 @@ export function Footer() {
                 </a>
               );
             })}
+          </div>
+
+          <div className="mt-7 flex flex-wrap gap-3">
+            <a
+              href={appLinks.appStore}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-xl border border-white/15 px-3.5 py-2 transition-colors hover:border-aqua/50"
+            >
+              <AppleIcon className="size-5 shrink-0" />
+              <span className="leading-tight">
+                <span className="block text-[10px] text-white/60">Download on the</span>
+                <span className="block text-xs font-semibold">App Store</span>
+              </span>
+            </a>
+            <a
+              href={appLinks.playStore}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-xl border border-white/15 px-3.5 py-2 transition-colors hover:border-aqua/50"
+            >
+              <GooglePlayIcon className="size-5 shrink-0" />
+              <span className="leading-tight">
+                <span className="block text-[10px] text-white/60">Get it on</span>
+                <span className="block text-xs font-semibold">Google Play</span>
+              </span>
+            </a>
           </div>
         </div>
 

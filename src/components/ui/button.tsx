@@ -36,10 +36,9 @@ export function Button({
   const content = (
     <>
       <span>{children}</span>
-      <ArrowRight
-        className="size-4 transition-transform duration-200 group-hover/btn:translate-x-1"
-        aria-hidden="true"
-      />
+      <span className="inline-grid w-0 shrink-0 overflow-hidden opacity-0 transition-all duration-300 ease-out group-hover/btn:w-4 group-hover/btn:opacity-100">
+        <ArrowRight className="size-4 -translate-x-1 transition-transform duration-300 ease-out group-hover/btn:translate-x-0" aria-hidden="true" />
+      </span>
     </>
   );
 

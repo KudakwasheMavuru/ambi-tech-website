@@ -8,36 +8,56 @@ TypeScript, Tailwind CSS and Framer Motion.
 - **Next.js 16** (App Router, static export via SSG)
 - **TypeScript**
 - **Tailwind CSS v4** (CSS-based theme — colour tokens live in `src/app/globals.css`)
-- **Framer Motion** for scroll reveals, the counters, and the testimonial carousel
+- **Framer Motion** for scroll reveals, counters, the testimonial carousel, the
+  Africa map, the intro loader and the eNoti phone showcase
 - **lucide-react** for icons
-- **next/font** (Space Grotesk + Inter), **next/image**
+- **next/font** (Plus Jakarta Sans), **next/image**
+
+## Site map
+
+- `/` — homepage: hero, about (incl. values), services, featured projects,
+  partner logo marquee, "Let's Collaborate", testimonials, final CTA.
+  Company-wide impact stats (registrations/invoices/VAT output) live on the
+  Tengamara project page instead, since they're specific to that programme.
+- `/projects` — full project listing
+- `/projects/[slug]` — one page per project (`tengamara-na-tva`, `tengapromo`,
+  `enoti`), statically generated via `generateStaticParams`
+- `/news` — press coverage, newest first
+- `/team` — leadership
+- `/contact` — contact form + details
 
 ## Project structure
 
 ```
 src/
   app/
-    layout.tsx        Root layout: fonts, Nav, Footer
-    page.tsx           Homepage — assembles all sections
-    contact/page.tsx    /contact
-    team/page.tsx        /team
-    globals.css         Tailwind import, colour tokens, glass utilities, keyframes
+    layout.tsx              Root layout: font, Loader, Nav, Footer
+    page.tsx                  Homepage — assembles all sections
+    projects/page.tsx           /projects index
+    projects/[slug]/page.tsx     /projects/:slug detail pages (SSG)
+    news/page.tsx                /news
+    contact/page.tsx              /contact
+    team/page.tsx                  /team
+    globals.css              Tailwind import, colour tokens, glass utilities, keyframes
   content/
-    site.ts             ALL page copy lives here — edit this file, not the components
+    site.ts                  ALL page copy lives here — edit this file, not the components
   components/
     nav.tsx, footer.tsx
-    hero/network-map.tsx     Signature animated network map (pure SVG + Framer Motion)
-    sections/*                One component per homepage section
+    hero/network-map.tsx     Stylized whole-of-Africa map (pure SVG + Framer Motion)
+    sections/*                One component per homepage/section block
     contact/*, team/*
-    ui/*                       Button, GlassCard, SectionHeading, Reveal, AnimatedCounter, etc.
+    ui/*                       Button, GlassCard, SectionHeading, Reveal, ScrollScale,
+                                 Magnetic, CursorGlow, Loader, Marquee, AnimatedCounter, etc.
 ```
 
 ### Editing copy
 
-All homepage, contact and team copy is centralised in
-[`src/content/site.ts`](src/content/site.ts) as typed exports (`hero`, `about`,
-`services`, `projects`, `contactPage`, `teamPage`, …). Update the strings there
-— no component files need to change for a copy edit.
+All copy is centralised in [`src/content/site.ts`](src/content/site.ts) as
+typed exports (`hero`, `about`, `services`, `projects`, `newsPage`,
+`contactPage`, `teamPage`, …). Update the strings there — no component files
+need to change for a copy edit. Projects (including the eNoti phone-showcase
+captions in `enotiScreens`) are data-driven, so adding a new project or news
+item is a data change, not a new component.
 
 ### Colour tokens
 
@@ -54,24 +74,55 @@ utilities (`bg-teal-deep`, `text-aqua`, etc.):
 | `ink` | `#0e2a30` | Body text |
 | `muted` | `#5b7076` | Secondary body text |
 
+### Animation primitives (`src/components/ui/`)
+
+- `reveal.tsx` — scroll-triggered fade/stagger (used everywhere)
+- `scroll-scale.tsx` — Groww-style scale/opacity tied to scroll position (services cards, testimonials, project/news cards)
+- `magnetic.tsx` — subtle cursor-follow pull, wrapped around the two hero-scale CTAs
+- `cursor-glow.tsx` — soft aqua glow that tracks the pointer (hero, final CTA)
+- `particle-field.tsx` — canvas-based constellation of dots that drift and
+  connect with nearby dots, and scatter away from the cursor on pointer move
+  (hero, final CTA). Themeable (`theme="dark" | "light"`) for light vs dark
+  section backgrounds.
+- `floating-chip.tsx` — small glass proof-point cards that gently float in
+  place (used around the hero map)
+- `loader.tsx` — branded intro loader, shown once per browser session
+- `marquee.tsx` — infinite auto-scroll strip (partner logos)
+- `photo-header.tsx` — full-bleed photo banner with heading overlay, used as
+  the page header on `/projects` and `/news`
+
+All of the above check `useReducedMotion()` and degrade to a static, fully
+visible state — nothing is ever hidden behind an animation that never plays.
+
 ## Known TODOs before launch
 
-- **Logo**: the real AMBI Tech logo (extracted from the brand brief) is in
-  `public/logo/ambitech-logo.jpg`. Swap for a vector/transparent version if the
-  client supplies one.
-- **Photography**: project imagery, the About section visual, and team photos
-  are all tasteful placeholders (gradient panels / icon tiles) with `TODO`
-  comments in the source — swap in real photography when available.
-- **Team bios**: `src/content/site.ts` → `teamPage.leadership` has placeholder
-  names/bios for CTO and CFO, and a bio placeholder for Patrick Ndahiro.
+- **Logo**: transparent PNG (`public/logo/ambitech-logo-transparent.png`) was
+  generated by keying out the white background of the client-supplied JPG.
+  Swap for a native vector/transparent export if the client has one.
+- **Team bios & LinkedIn**: `teamPage.leadership` in `site.ts` still has
+  placeholder names/bios for CTO and CFO, and a bio placeholder + LinkedIn URL
+  for Patrick Ndahiro.
 - **Contact form**: `src/components/contact/contact-form.tsx` has a `TODO`
   where the submit handler currently just simulates a delay. Wire it to a real
   endpoint (API route, or a form service).
-- **General enquiries email**: `contactPage.details.generalEmail` in
-  `site.ts` is a placeholder (`info@ambi-tech.rw`) — confirm the real inbox.
+- **Phone number**: `contactPage.details.phone` / `footer.contact.phone` is a
+  placeholder buffer number (`+250 788 000 000`) per the client's request —
+  swap in the real business line.
 - **Google Maps embed**: `src/components/contact/map-placeholder.tsx` links out
-  to a Google Maps search for "Kigali, Rwanda". Replace with a real `<iframe>`
-  embed once the exact office address/place ID is confirmed.
+  to a Google Maps search for the office address. Replace with a real
+  `<iframe>` embed once the place ID is confirmed.
+- **Social links**: `footer.socials` (`LinkedIn`, `X`) are still `#` — no
+  handles were supplied.
+- **News item date**: the IGIHE article in `newsPage.items` has no confirmed
+  publish date (the site returned a 403 to automated fetches) — the card
+  simply omits the date badge; fill in if the client can confirm it.
+- **eNoti screenshots**: `public/app-screenshots/` holds 4 real screenshots
+  pulled from the live Play Store listing. Refresh these if the app's UI
+  changes significantly.
+- **Photography**: `public/images/` holds real, free-license photography
+  (2 Kigali cityscapes by Faustin Nkurunziza, 1 card-payment shot — all
+  sourced from Pexels, free for commercial use). Swap for the client's own
+  photography whenever it's available.
 - **Favicon**: currently the default Next.js placeholder at
   `src/app/favicon.ico` — replace with the AMBI Tech mark.
 
@@ -92,8 +143,8 @@ npm run start   # serve the production build locally
 ```
 
 `npm run build` type-checks, lints via Next's build step, and statically
-prerenders every route (confirmed: `/`, `/contact`, `/team` are all `○
-(Static)`).
+prerenders every route, including the three dynamic `/projects/[slug]` pages
+via `generateStaticParams`.
 
 ## Deploying to Vercel
 

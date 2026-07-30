@@ -32,7 +32,7 @@ export default function TeamPage() {
             stagger={0.1}
           >
             {teamPage.leadership.map((member) => (
-              <RevealItem key={member.role}>
+              <RevealItem key={member.role} className="h-full">
                 <TeamCard member={member} />
               </RevealItem>
             ))}

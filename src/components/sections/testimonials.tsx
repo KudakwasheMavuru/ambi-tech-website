@@ -7,6 +7,7 @@ import { testimonials } from "@/content/site";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { GlassCard } from "@/components/ui/glass-card";
 import { Reveal } from "@/components/ui/reveal";
+import { ScrollScale } from "@/components/ui/scroll-scale";
 import { cn } from "@/lib/cn";
 
 const AUTO_ADVANCE_MS = 6500;
@@ -38,15 +39,17 @@ export function Testimonials() {
   return (
     <section className="relative bg-surface-tint py-24 sm:py-32">
       <div className="container-ambi">
-        <SectionHeading
-          eyebrow={testimonials.eyebrow}
-          heading={testimonials.heading}
-          align="center"
-          className="mx-auto"
-        />
+        <Reveal>
+          <SectionHeading
+            eyebrow={testimonials.eyebrow}
+            heading={testimonials.heading}
+            align="center"
+            className="mx-auto"
+          />
+        </Reveal>
 
         <Reveal className="relative mx-auto mt-14 max-w-2xl" delay={0.1}>
-          <div className="relative overflow-hidden">
+          <ScrollScale from={0.92} className="relative overflow-hidden">
             <AnimatePresence mode="wait" custom={direction} initial={false}>
               <motion.div
                 key={index}
@@ -80,7 +83,7 @@ export function Testimonials() {
                 </GlassCard>
               </motion.div>
             </AnimatePresence>
-          </div>
+          </ScrollScale>
 
           <div className="mt-8 flex items-center justify-center gap-6">
             <button

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { MapPin, Phone, Mail } from "lucide-react";
 import { contactPage, siteMeta } from "@/content/site";
 import { GlassCard } from "@/components/ui/glass-card";
@@ -16,6 +17,14 @@ export default function ContactPage() {
   return (
     <section className="relative overflow-hidden pt-36 pb-24 sm:pt-44 sm:pb-32">
       <GradientMesh className="opacity-30" />
+      <Image
+        src="/art/kigali-skyline.png"
+        alt=""
+        aria-hidden="true"
+        width={1920}
+        height={1080}
+        className="pointer-events-none absolute -right-24 top-24 hidden w-[46rem] opacity-[0.14] mix-blend-multiply sm:block lg:-right-12"
+      />
       <div className="container-ambi relative">
         <Reveal className="mx-auto max-w-2xl text-center">
           <span className="mb-3 inline-block text-xs font-semibold uppercase tracking-[0.16em] text-teal-mid">
@@ -49,12 +58,6 @@ export default function ContactPage() {
                   label="General enquiries"
                   value={contactPage.details.generalEmail}
                   href={`mailto:${contactPage.details.generalEmail}`}
-                />
-                <ContactDetail
-                  icon={Mail}
-                  label="Patrick Ndahiro, Executive Chairman"
-                  value={contactPage.details.contactEmail}
-                  href={`mailto:${contactPage.details.contactEmail}`}
                 />
               </GlassCard>
 

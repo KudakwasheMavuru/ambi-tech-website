@@ -40,12 +40,12 @@ export function Nav() {
         >
           <Link href="/" className="flex items-center gap-2" onClick={() => setOpen(false)}>
             <Image
-              src="/logo/ambitech-logo.jpg"
+              src="/logo/ambitech-logo-transparent.png"
               alt="AMBI Tech"
-              width={140}
-              height={104}
+              width={170}
+              height={92}
               priority
-              className="h-9 w-auto mix-blend-multiply"
+              className="h-11 w-auto sm:h-12"
             />
           </Link>
 
@@ -69,7 +69,7 @@ export function Nav() {
 
           <button
             type="button"
-            className="inline-flex size-11 items-center justify-center rounded-full text-ink md:hidden"
+            className="relative z-10 inline-flex size-11 items-center justify-center rounded-full text-ink md:hidden"
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
             onClick={() => setOpen((v) => !v)}
@@ -81,29 +81,38 @@ export function Nav() {
 
       <AnimatePresence>
         {open && (
-          <motion.div
-            initial={{ opacity: 0, y: -8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.2 }}
-            className="container-ambi md:hidden"
-          >
-            <div className="mt-2 flex flex-col gap-1 rounded-2xl border border-white/70 bg-white/98 p-4 shadow-[0_20px_45px_-15px_rgba(14,42,48,0.25)] backdrop-blur-xl">
+          <>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.25 }}
+              className="fixed inset-0 bg-ink/30 backdrop-blur-sm md:hidden"
+              onClick={() => setOpen(false)}
+              aria-hidden="true"
+            />
+            <motion.div
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+              className="fixed inset-y-0 right-0 z-10 flex w-[82%] max-w-xs flex-col gap-1 border-l border-white/70 bg-white/98 p-6 pt-24 shadow-[-20px_0_45px_-15px_rgba(14,42,48,0.25)] backdrop-blur-xl md:hidden"
+            >
               {nav.links.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
                   onClick={() => setOpen(false)}
-                  className="rounded-lg px-3 py-3 text-base font-medium text-ink hover:bg-teal-deep/5"
+                  className="rounded-lg px-3 py-3 text-lg font-medium text-ink hover:bg-teal-deep/5"
                 >
                   {link.label}
                 </Link>
               ))}
-              <Button href={nav.cta.href} variant="primary" className="mt-2 w-full">
+              <Button href={nav.cta.href} variant="primary" className="mt-4 self-start">
                 {nav.cta.label}
               </Button>
-            </div>
-          </motion.div>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     </header>
