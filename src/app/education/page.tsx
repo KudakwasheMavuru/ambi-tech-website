@@ -8,6 +8,7 @@ import { GradientHeader } from "@/components/ui/gradient-header";
 import { AnimatedCounter } from "@/components/ui/animated-counter";
 import { Button } from "@/components/ui/button";
 import { Magnetic } from "@/components/ui/magnetic";
+import { InteractiveReceipt } from "@/components/ui/interactive-receipt";
 
 const flowIcons = [ShoppingBag, ReceiptText, Gift, PartyPopper];
 
@@ -40,15 +41,7 @@ export default function EducationPage() {
               </p>
             </Reveal>
             <Reveal delay={0.1} className="relative lg:col-span-5">
-              <div className="relative mx-auto aspect-square w-full max-w-xs">
-                <Image
-                  src="/images/receipt-hand.png"
-                  alt="A hand holding a printed receipt"
-                  fill
-                  sizes="320px"
-                  className="object-contain"
-                />
-              </div>
+              <InteractiveReceipt />
             </Reveal>
           </div>
         </div>

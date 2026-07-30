@@ -1,22 +1,7 @@
-import { Wallet, Landmark, ShieldCheck, Layers } from "lucide-react";
 import { about } from "@/content/site";
 import { Reveal, RevealGroup, RevealItem } from "@/components/ui/reveal";
 import { NetworkMap } from "@/components/hero/network-map";
-import { FloatingIcon } from "@/components/ui/floating-icon";
-
-const solutionIcons = [
-  { icon: <Wallet className="size-4.5" aria-hidden="true" />, label: "Fintech & Digital Payments" },
-  { icon: <Landmark className="size-4.5" aria-hidden="true" />, label: "GovTech & Revenue Technology" },
-  { icon: <ShieldCheck className="size-4.5" aria-hidden="true" />, label: "Cybersecurity" },
-  { icon: <Layers className="size-4.5" aria-hidden="true" />, label: "ICT Solutions & Systems Integration" },
-];
-
-const iconPositions = [
-  "left-[8%] top-[14%]",
-  "right-[12%] top-[22%]",
-  "left-[16%] bottom-[16%]",
-  "right-[8%] bottom-[24%]",
-];
+import { OrbitGallery } from "@/components/ui/orbit-gallery";
 
 export function About() {
   return (
@@ -39,21 +24,12 @@ export function About() {
           </Reveal>
         </div>
 
-        <Reveal delay={0.15} className="relative mt-16 sm:mt-20">
-          <div className="group relative h-[320px] overflow-hidden rounded-3xl border border-teal-mid/15 bg-surface-tint sm:h-[420px] lg:h-[480px]">
-            <div className="absolute inset-4 transition-transform duration-700 ease-out group-hover:scale-[1.04] sm:inset-8">
+        <Reveal delay={0.15} className="relative mt-16 flex h-[420px] items-center justify-center sm:mt-20 sm:h-[560px] lg:h-[660px]">
+          <OrbitGallery />
+          <div className="group relative h-[260px] overflow-hidden rounded-3xl border border-teal-mid/15 bg-surface-tint shadow-[0_30px_70px_-35px_rgba(14,42,48,0.35)] sm:h-[340px] lg:h-[400px]" style={{ aspectRatio: "1479 / 1726" }}>
+            <div className="absolute inset-3 transition-transform duration-700 ease-out group-hover:scale-[1.04] sm:inset-5">
               <NetworkMap className="h-full w-full" />
             </div>
-            {solutionIcons.map((s, i) => (
-              <FloatingIcon
-                key={s.label}
-                icon={s.icon}
-                label={s.label}
-                className={iconPositions[i]}
-                delay={i * 0.6}
-                duration={5 + i}
-              />
-            ))}
           </div>
         </Reveal>
 

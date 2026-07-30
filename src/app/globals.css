@@ -109,6 +109,23 @@ body {
   }
 }
 
+@keyframes orbit-ring {
+  from {
+    transform: rotate(var(--start-angle)) translateX(var(--orbit-radius, 180px))
+      rotate(calc(var(--start-angle) * -1));
+  }
+  to {
+    transform: rotate(calc(var(--start-angle) + 360deg)) translateX(var(--orbit-radius, 180px))
+      rotate(calc((var(--start-angle) + 360deg) * -1));
+  }
+}
+
+.orbit-item {
+  animation-name: orbit-ring;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

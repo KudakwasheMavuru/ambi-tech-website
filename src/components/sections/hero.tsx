@@ -3,6 +3,7 @@ import { hero } from "@/content/site";
 import { Button } from "@/components/ui/button";
 import { RevealGroup, RevealItem } from "@/components/ui/reveal";
 import { CursorGlow } from "@/components/ui/cursor-glow";
+import { ParticleField } from "@/components/ui/particle-field";
 import { Magnetic } from "@/components/ui/magnetic";
 import { ScrollCue } from "@/components/ui/scroll-cue";
 
@@ -19,16 +20,21 @@ export function Hero() {
       />
       <div
         aria-hidden="true"
-        className="absolute inset-0 bg-gradient-to-b from-[#0e2a30]/92 via-[#123a42]/68 to-[#0a2127]/95"
+        className="absolute inset-0 bg-gradient-to-b from-[#0a1a30]/95 via-[#0e2a4a]/90 to-[#081420]/97"
       />
       <div
         aria-hidden="true"
-        className="absolute inset-0 bg-[radial-gradient(60%_50%_at_50%_38%,rgba(143,210,215,0.16)_0%,transparent_70%)]"
+        className="absolute inset-0 bg-[linear-gradient(155deg,rgba(10,26,48,0.55)_0%,rgba(18,58,90,0.35)_45%,rgba(8,20,32,0.6)_100%)] mix-blend-multiply"
+      />
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 bg-[radial-gradient(60%_50%_at_50%_38%,rgba(143,210,215,0.18)_0%,transparent_70%)]"
       />
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 opacity-[0.06] mix-blend-overlay [background-image:url('data:image/svg+xml;utf8,<svg xmlns=%27http://www.w3.org/2000/svg%27 width=%27120%27 height=%27120%27><filter id=%27n%27><feTurbulence type=%27fractalNoise%27 baseFrequency=%270.9%27 numOctaves=%272%27 stitchTiles=%27stitch%27/></filter><rect width=%27100%25%27 height=%27100%25%27 filter=%27url(%23n)%27/></svg>')]"
       />
+      <ParticleField theme="light" className="opacity-80" density={0.00011} maxParticles={110} />
       <CursorGlow className="absolute inset-0" />
 
       <div className="container-ambi relative flex flex-col items-center pt-24 pb-16 text-center sm:pt-28">
