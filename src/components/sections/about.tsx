@@ -26,7 +26,7 @@ export function About() {
 
         <Reveal delay={0.15} className="relative mt-16 flex h-[420px] items-center justify-center sm:mt-20 sm:h-[560px] lg:h-[660px]">
           <OrbitGallery />
-          <div className="group relative h-[260px] overflow-hidden rounded-3xl border border-teal-mid/15 bg-surface-tint shadow-[0_30px_70px_-35px_rgba(14,42,48,0.35)] sm:h-[340px] lg:h-[400px]" style={{ aspectRatio: "1479 / 1726" }}>
+          <div className="group relative h-[260px] overflow-hidden rounded-3xl bg-surface-tint sm:h-[340px] lg:h-[400px]" style={{ aspectRatio: "1479 / 1726" }}>
             <div className="absolute inset-3 transition-transform duration-700 ease-out group-hover:scale-[1.04] sm:inset-5">
               <NetworkMap className="h-full w-full" />
             </div>

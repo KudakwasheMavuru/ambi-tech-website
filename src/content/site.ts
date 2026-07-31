@@ -277,7 +277,7 @@ export const contactPage = {
   heading: "Let's talk about what you're building.",
   body: "Government institution, financial partner, or business going digital: tell us what you're trying to solve and we'll get back to you.",
   details: {
-    location: "34 KG 6 Av, Gishushu, Kigali, Rwanda",
+    location: "KG 6 Av 34, Gishushu, Kigali, Rwanda",
     phone: "+250 788 000 000", // TODO(client): placeholder buffer number, replace with real business line
     generalEmail: "info@ambi-tech.rw",
   },
@@ -473,7 +473,7 @@ export const footer = {
     },
   ],
   contact: {
-    location: "34 KG 6 Av, Gishushu, Kigali, Rwanda",
+    location: "KG 6 Av 34, Gishushu, Kigali, Rwanda",
     phone: "+250 788 000 000",
     email: "info@ambi-tech.rw",
   },

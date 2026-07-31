@@ -10,6 +10,8 @@ export function InteractiveReceipt() {
   const ref = useRef<HTMLDivElement>(null);
   const reduceMotion = useReducedMotion();
   const [hovered, setHovered] = useState(false);
+  const [clicked, setClicked] = useState(false);
+  const open = reduceMotion ? true : hovered || clicked;
 
   const rotX = useMotionValue(0);
   const rotY = useMotionValue(0);
@@ -43,14 +45,15 @@ export function InteractiveReceipt() {
       <motion.div
         ref={ref}
         onPointerMove={handlePointerMove}
+        onClick={() => setClicked((v) => !v)}
         style={{ rotateX: reduceMotion ? 0 : springX, rotateY: reduceMotion ? 0 : springY }}
-        className="relative z-10 aspect-square w-full cursor-pointer"
+        className="relative z-10 aspect-square w-full cursor-pointer select-none"
         animate={reduceMotion ? undefined : { y: [0, -10, 0] }}
         transition={reduceMotion ? undefined : { duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
       >
         <motion.div
           className="h-full w-full"
-          animate={hovered ? { rotate: 2, scale: 1.04 } : { rotate: -3, scale: 1 }}
+          animate={open ? { rotate: 2, scale: 1.04 } : { rotate: -3, scale: 1 }}
           transition={{ type: "spring", damping: 14, stiffness: 160 }}
         >
           <Image
@@ -58,7 +61,7 @@ export function InteractiveReceipt() {
             alt="A curled printed receipt"
             fill
             sizes="320px"
-            className="object-contain drop-shadow-[0_20px_30px_rgba(14,42,48,0.25)]"
+            className="object-contain drop-shadow-[0_20px_30px_rgba(14,42,48,0.25)] pointer-events-none"
           />
         </motion.div>
       </motion.div>
@@ -67,13 +70,7 @@ export function InteractiveReceipt() {
         aria-hidden="true"
         className="relative -mt-4 w-[58%] origin-top overflow-hidden rounded-b-lg border border-t-0 border-teal-mid/15 bg-white shadow-[0_18px_30px_-16px_rgba(14,42,48,0.35)]"
         initial={false}
-        animate={
-          reduceMotion
-            ? { scaleY: 1, opacity: 1 }
-            : hovered
-              ? { scaleY: 1, opacity: 1 }
-              : { scaleY: 0, opacity: 0 }
-        }
+        animate={open ? { scaleY: 1, opacity: 1 } : { scaleY: 0, opacity: 0 }}
         transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
       >
         <div className="flex flex-col gap-1.5 px-3 py-4">
@@ -86,8 +83,8 @@ export function InteractiveReceipt() {
         </div>
       </motion.div>
 
-      <p className="mt-5 text-center text-xs text-muted opacity-0 transition-opacity duration-300 group-hover:opacity-100 sm:mt-3">
-        Hover to unfold
+      <p className="mt-5 text-center text-xs text-muted transition-opacity duration-300 sm:mt-3" style={{ opacity: open ? 0 : 1 }}>
+        Hover or tap to unfold
       </p>
     </div>
   );
