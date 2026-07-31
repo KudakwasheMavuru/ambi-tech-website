@@ -13,7 +13,7 @@ import { InteractiveReceipt } from "@/components/ui/interactive-receipt";
 const flowIcons = [ShoppingBag, ReceiptText, Gift, PartyPopper];
 
 export const metadata: Metadata = {
-  title: `Education & Capacity Building — ${siteMeta.name}`,
+  title: `Education & Capacity Building: ${siteMeta.name}`,
   description: educationPage.sub,
 };
 

@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { GlassCard } from "@/components/ui/glass-card";
 
 export const metadata: Metadata = {
-  title: `Team — ${siteMeta.name}`,
+  title: `Team: ${siteMeta.name}`,
   description: teamPage.sub,
 };
 

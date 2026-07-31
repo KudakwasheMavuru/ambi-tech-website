@@ -51,7 +51,7 @@ export function ContactForm() {
         <CheckCircle2 className="size-10 text-teal-deep" aria-hidden="true" />
         <p className="font-display text-lg font-semibold text-ink">Message sent</p>
         <p className="max-w-sm text-sm text-muted">
-          Thanks for reaching out — someone from AMBI Tech will get back to you shortly.
+          Thanks for reaching out. Someone from AMBI Tech will get back to you shortly.
         </p>
         <button
           type="button"

@@ -9,7 +9,7 @@ import { MapPlaceholder } from "@/components/contact/map-placeholder";
 import { Reveal } from "@/components/ui/reveal";
 
 export const metadata: Metadata = {
-  title: `Contact — ${siteMeta.name}`,
+  title: `Contact: ${siteMeta.name}`,
   description: contactPage.body,
 };
 

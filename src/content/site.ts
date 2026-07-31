@@ -73,7 +73,7 @@ export const about = {
 export const statement = {
   kicker: "Why it matters",
   lines: [
-    "Every economy runs on trust —",
+    "Every economy runs on trust,",
     "in the systems, in the numbers, in the state.",
     "We build the technology that earns it.",
   ],
@@ -489,7 +489,7 @@ export const footer = {
 export const siteMeta = {
   name: "AMBI Tech",
   domain: "ambi-tech.rw",
-  title: "AMBI Tech — Technology that moves a nation forward.",
+  title: "AMBI Tech: Technology that moves a nation forward.",
   description:
     "AMBI Tech builds the fintech, GovTech and cybersecurity infrastructure that governments and businesses rely on. Proven at national scale. Engineered in Kigali, Rwanda.",
 };

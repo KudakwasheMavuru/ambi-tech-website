@@ -10,7 +10,7 @@ import { InstagramIcon } from "@/components/ui/icons";
 import type { ComponentType, SVGProps } from "react";
 
 export const metadata: Metadata = {
-  title: `News — ${siteMeta.name}`,
+  title: `News: ${siteMeta.name}`,
   description: newsPage.sub,
 };
 

@@ -4,7 +4,7 @@ import { ProjectCard } from "@/components/sections/project-card";
 import { GradientHeader } from "@/components/ui/gradient-header";
 
 export const metadata: Metadata = {
-  title: `Projects — ${siteMeta.name}`,
+  title: `Projects: ${siteMeta.name}`,
   description: projects.heading,
 };
 
