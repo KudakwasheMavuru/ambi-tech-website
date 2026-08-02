@@ -93,8 +93,7 @@ export function Footer() {
       </div>
 
       <div className="border-t border-white/10">
-        <div className="container-ambi flex flex-col gap-2 py-6 text-xs text-white/55 sm:flex-row sm:items-center sm:justify-between">
-          <p>{footer.subsidiaryLine}</p>
+        <div className="container-ambi py-6 text-center text-xs text-white/55">
           <p>{footer.copyright(year)}</p>
         </div>
       </div>

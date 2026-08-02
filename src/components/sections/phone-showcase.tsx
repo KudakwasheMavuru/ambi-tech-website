@@ -1,7 +1,6 @@
 "use client";
 
 import { useRef, useState, type PointerEvent } from "react";
-import Image from "next/image";
 import {
   AnimatePresence,
   motion,
@@ -14,6 +13,7 @@ import {
 } from "framer-motion";
 import { enotiScreens } from "@/content/site";
 import { Reveal } from "@/components/ui/reveal";
+import { EnotiScreenMock } from "@/components/enoti/screen-mocks";
 import { cn } from "@/lib/cn";
 
 export function PhoneShowcase() {
@@ -76,7 +76,7 @@ export function PhoneShowcase() {
           <div className="order-2 flex flex-col gap-16 lg:order-1 lg:justify-center">
             {enotiScreens.map((screen, i) => (
               <button
-                key={screen.src}
+                key={screen.kind}
                 type="button"
                 onClick={() => goTo(i)}
                 className={cn(
@@ -113,13 +113,7 @@ export function PhoneShowcase() {
                   <div className="h-4 w-24 rounded-full bg-ink" />
                 </div>
                 {reduceMotion ? (
-                  <Image
-                    src={enotiScreens[0].src}
-                    alt="eNoti app screen"
-                    fill
-                    sizes="260px"
-                    className="object-cover"
-                  />
+                  <EnotiScreenMock kind={enotiScreens[0].kind} />
                 ) : (
                   <AnimatePresence mode="wait">
                     <motion.div
@@ -130,13 +124,7 @@ export function PhoneShowcase() {
                       transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
                       className="absolute inset-0"
                     >
-                      <Image
-                        src={enotiScreens[active].src}
-                        alt="eNoti app screen"
-                        fill
-                        sizes="260px"
-                        className="object-cover"
-                      />
+                      <EnotiScreenMock kind={enotiScreens[active].kind} />
                     </motion.div>
                   </AnimatePresence>
                 )}
@@ -146,7 +134,7 @@ export function PhoneShowcase() {
             <div className="flex items-center gap-2">
               {enotiScreens.map((screen, i) => (
                 <button
-                  key={screen.src}
+                  key={screen.kind}
                   type="button"
                   onClick={() => goTo(i)}
                   aria-label={`Show screen ${i + 1}`}

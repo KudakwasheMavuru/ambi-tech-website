@@ -444,26 +444,26 @@ export const appLinks = {
 
 export const enotiScreens = [
   {
-    src: "/app-screenshots/enoti-wallet.webp",
-    label: "Your wallet, at a glance",
-    body: "Balance, quick actions and recent activity in one screen: Payment, Transfer, Transactions, MyRRA and Lotto.",
+    kind: "payments",
+    label: "Pay every biller in one tap",
+    body: "Favourite billers up top, the full list below: Cash Power, RRA, MTN and Airtel Airtime, Canal+ and more.",
   },
   {
-    src: "/app-screenshots/enoti-transfer.webp",
+    kind: "transfer",
     label: "Move money your way",
-    body: "Send to a bank, mobile money, or another eNoti wallet, all from the same transfer flow.",
+    body: "Pay yourself or someone else. Pick a saved beneficiary or enter a number, and eNoti confirms the account holder before you send.",
   },
   {
-    src: "/app-screenshots/enoti-rewards.webp",
-    label: "Turn receipts into rewards",
-    body: "Every VAT receipt earns lottery points you can redeem for cash prizes through TengaPromo.",
+    kind: "limits",
+    label: "Stay in control of your limits",
+    body: "Daily limits, amount transferred and what you have left are always one tap away, before you confirm a transfer.",
   },
   {
-    src: "/app-screenshots/enoti-history.webp",
-    label: "A clear transaction history",
-    body: "Every cashback, transfer and payment, itemised and easy to review month by month.",
+    kind: "schedule",
+    label: "Schedule payments that repeat",
+    body: "Set a transfer to run daily, weekly, monthly or yearly, with a start date and an optional end date.",
   },
-];
+] as const;
 
 export const footer = {
   tagline: "Technology that moves a nation forward.",
@@ -497,7 +497,6 @@ export const footer = {
     { label: "LinkedIn", href: "#" },
     { label: "X", href: "#" },
   ],
-  subsidiaryLine: "AMBI Tech Ltd is a subsidiary of AMBIVISION Rwanda Holdings Limited.",
   copyright: (year: number) => `© ${year} AMBI Tech Ltd. All rights reserved.`,
 };
 
