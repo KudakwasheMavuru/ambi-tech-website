@@ -86,6 +86,24 @@ export default function EducationPage() {
               </GlassCard>
             </RevealItem>
           </RevealGroup>
+
+          <RevealGroup className="mt-6 grid grid-cols-3 gap-4 sm:gap-6" stagger={0.08}>
+            {["/gallery/tengapromo/photo-04.jpg", "/gallery/tengapromo/photo-12.jpg", "/gallery/tengapromo/photo-18.jpg"].map(
+              (src) => (
+                <RevealItem key={src}>
+                  <div className="relative aspect-square overflow-hidden rounded-2xl">
+                    <Image
+                      src={src}
+                      alt=""
+                      fill
+                      sizes="(min-width: 640px) 33vw, 33vw"
+                      className="object-cover transition-transform duration-500 hover:scale-105"
+                    />
+                  </div>
+                </RevealItem>
+              )
+            )}
+          </RevealGroup>
         </div>
       </section>
 

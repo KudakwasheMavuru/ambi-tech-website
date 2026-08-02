@@ -44,14 +44,16 @@ export const hero = {
 
 export const partners = {
   eyebrow: "Trusted by",
+  // Requested order is RRA, Quik, RSwitch, BK, BPR, UB Tech, QT, Ambi Green, Ambi-Vision.
+  // Quik, Ambi Green and Ambi-Vision logo files haven't been supplied yet, so they're
+  // left out of this list rather than faked. Add them here once the assets arrive.
   logos: [
     { name: "Rwanda Revenue Authority", src: "/partners/rra.png" },
+    { name: "RSwitch", src: "/partners/rswitch.png" },
     { name: "Bank of Kigali", src: "/partners/bank-of-kigali.png" },
     { name: "BPR Bank", src: "/partners/bpr-bank.png" },
-    { name: "RSwitch", src: "/partners/rswitch.png" },
-    { name: "QT Global Software", src: "/partners/qt-global.png" },
     { name: "UB-Tech", src: "/partners/ub-tech.png" },
-    { name: "eKash", src: "/partners/ekash.png" },
+    { name: "QT Global Software", src: "/partners/qt-global.png" },
   ],
 };
 
@@ -178,7 +180,12 @@ export const projects: {
       sections: [
         {
           heading: "A shared win",
-          body: "For consumers, it's a reason to ask for the invoice. For merchants, it's repeat traffic and a direct channel to customers. For the economy, it's millions of transactions moving from invisible to visible.",
+          body: "For consumers, it's a reason to ask for the invoice: every receipt is a ticket, and every ticket is a chance to win. For merchants, it's repeat traffic and a direct channel to customers who now have a reason to come back and ask for a proper receipt every time. For the economy, it's millions of small transactions moving from invisible to visible, each one pulling a little more of the informal market into the formal tax net.\n\nThe prizes range from everyday cashback to headline draws, cars, electronics, and cash, so there's a reason to play whether you're buying groceries or making a big purchase. It's built to feel like a rewards programme first and a compliance tool second, which is exactly why it works.",
+        },
+        {
+          heading: "How to enter",
+          body: "Entering doesn't require an app, a sign-up form or any extra steps beyond what you're already doing when you shop.",
+          flow: ["Buy", "Ask for your EBM receipt", "You're automatically entered", "Winners are drawn and announced"],
         },
       ],
       cta: { label: "Read the case study", href: "/projects/tengapromo" },
@@ -322,8 +329,15 @@ export const teamPage = {
   join: {
     heading: "Want to Build With Us?",
     body: "We're always looking for engineers, designers and analysts who want to work on systems that matter at national scale.",
-    cta: { label: "Join the Team", href: "/contact" },
+    cta: { label: "Join the Team", href: "/careers" },
   },
+};
+
+export const careersPage = {
+  eyebrow: "Careers",
+  heading: "No open roles right now",
+  body: "We don't have any open positions at the moment, but we're growing. Check back later, or reach out and introduce yourself. We're always glad to hear from engineers, designers and analysts who want to work on systems that matter at national scale.",
+  cta: { label: "Get in touch", href: "/contact" },
 };
 
 export type NewsItem = {
@@ -339,7 +353,7 @@ export type NewsItem = {
 export const newsPage = {
   eyebrow: "In the News",
   heading: "Where AMBI Tech has been featured",
-  sub: "Media coverage and updates from across our work, newest first.",
+  sub: "Media coverage and updates from across our work.",
   items: [
     {
       title: "Tengamara na TVA: Turning Consumers into Champions of Tax Compliance",
@@ -383,6 +397,7 @@ export const newsPage = {
     links: [
       { label: "Instagram @tenga_promo", href: "https://www.instagram.com/tenga_promo/" },
       { label: "X @ikubirelotto", href: "https://x.com/ikubirelotto" },
+      { label: "LinkedIn", href: "#" }, // TODO(client): add AMBI Tech's real LinkedIn company page URL
     ],
   },
 };

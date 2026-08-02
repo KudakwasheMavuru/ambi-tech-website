@@ -1,7 +1,5 @@
 import { about } from "@/content/site";
 import { Reveal, RevealGroup, RevealItem } from "@/components/ui/reveal";
-import { NetworkMap } from "@/components/hero/network-map";
-import { OrbitGallery } from "@/components/ui/orbit-gallery";
 
 export function About() {
   return (
@@ -24,24 +22,15 @@ export function About() {
           </Reveal>
         </div>
 
-        <Reveal delay={0.15} className="relative mt-16 flex h-[420px] items-center justify-center sm:mt-20 sm:h-[560px] lg:h-[660px]">
-          <OrbitGallery />
-          <div className="group relative h-[260px] overflow-hidden rounded-3xl bg-surface-tint sm:h-[340px] lg:h-[400px]" style={{ aspectRatio: "1479 / 1726" }}>
-            <div className="absolute inset-3 transition-transform duration-700 ease-out group-hover:scale-[1.04] sm:inset-5">
-              <NetworkMap className="h-full w-full" />
-            </div>
-          </div>
-        </Reveal>
-
         <RevealGroup
-          className="mt-16 grid grid-cols-1 gap-x-10 gap-y-10 border-t border-teal-mid/15 pt-14 sm:mt-20 sm:grid-cols-2 sm:pt-16"
+          className="mx-auto mt-16 grid max-w-3xl grid-cols-1 gap-x-10 gap-y-10 border-t border-teal-mid/15 pt-14 text-center sm:mt-20 sm:grid-cols-2 sm:pt-16"
           stagger={0.1}
         >
-          <RevealItem>
+          <RevealItem className="flex flex-col items-center">
             <h3 className="font-display text-xl font-semibold text-ink">{about.vision.label}</h3>
             <p className="mt-3 max-w-sm text-base leading-relaxed text-muted">{about.vision.body}</p>
           </RevealItem>
-          <RevealItem>
+          <RevealItem className="flex flex-col items-center">
             <h3 className="font-display text-xl font-semibold text-ink">{about.mission.label}</h3>
             <p className="mt-3 max-w-sm text-base leading-relaxed text-muted">{about.mission.body}</p>
           </RevealItem>
@@ -49,18 +38,19 @@ export function About() {
 
         <div className="mt-16 border-t border-teal-mid/15 pt-10 sm:mt-20 sm:pt-12">
           <RevealGroup
-            className="flex flex-wrap items-baseline justify-center gap-x-3 gap-y-2 text-center sm:gap-x-4"
+            className="flex flex-wrap items-center justify-center gap-x-4 gap-y-3 sm:gap-x-5"
             stagger={0.06}
           >
             {about.values.map((value, i) => (
-              <RevealItem key={value} className="flex items-baseline">
+              <RevealItem key={value} className="flex items-center">
                 <span className="font-display text-xl font-semibold tracking-tight text-ink sm:text-2xl">
                   {value}
                 </span>
                 {i < about.values.length - 1 && (
-                  <span className="ml-3 text-aqua sm:ml-4" aria-hidden="true">
-                    &middot;
-                  </span>
+                  <span
+                    className="ml-4 inline-block size-2 rounded-full bg-aqua sm:ml-5 sm:size-2.5"
+                    aria-hidden="true"
+                  />
                 )}
               </RevealItem>
             ))}

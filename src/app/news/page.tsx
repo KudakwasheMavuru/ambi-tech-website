@@ -6,7 +6,7 @@ import { Reveal, RevealGroup, RevealItem } from "@/components/ui/reveal";
 import { GlassCard } from "@/components/ui/glass-card";
 import { ScrollScale } from "@/components/ui/scroll-scale";
 import { GradientHeader } from "@/components/ui/gradient-header";
-import { InstagramIcon } from "@/components/ui/icons";
+import { InstagramIcon, LinkedInIcon } from "@/components/ui/icons";
 import type { ComponentType, SVGProps } from "react";
 
 export const metadata: Metadata = {
@@ -26,6 +26,7 @@ function formatDate(date: string | null) {
 const socialIcons: Record<string, ComponentType<SVGProps<SVGSVGElement>>> = {
   Instagram: InstagramIcon,
   X: XIcon,
+  LinkedIn: LinkedInIcon,
 };
 
 export default function NewsPage() {
@@ -55,6 +56,7 @@ export default function NewsPage() {
                             src={item.image}
                             alt=""
                             fill
+                            quality={92}
                             sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
                             className="object-cover transition-transform duration-500 group-hover:scale-105"
                           />

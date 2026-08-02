@@ -5,7 +5,7 @@ import { contactPage, siteMeta } from "@/content/site";
 import { GlassCard } from "@/components/ui/glass-card";
 import { GradientMesh } from "@/components/ui/gradient-mesh";
 import { ContactForm } from "@/components/contact/contact-form";
-import { MapPlaceholder } from "@/components/contact/map-placeholder";
+import { GoogleMap } from "@/components/contact/google-map";
 import { Reveal } from "@/components/ui/reveal";
 
 export const metadata: Metadata = {
@@ -61,7 +61,7 @@ export default function ContactPage() {
                 />
               </GlassCard>
 
-              <MapPlaceholder />
+              <GoogleMap />
             </div>
           </Reveal>
 

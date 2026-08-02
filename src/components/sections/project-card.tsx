@@ -38,10 +38,21 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
               style={{
                 background:
                   project.tint === "teal"
-                    ? "linear-gradient(160deg, rgba(22,98,114,0.75) 0%, rgba(94,145,153,0.35) 100%)"
-                    : "linear-gradient(160deg, rgba(94,145,153,0.7) 0%, rgba(143,210,215,0.35) 100%)",
+                    ? "linear-gradient(160deg, rgba(22,98,114,0.55) 0%, rgba(94,145,153,0.2) 100%)"
+                    : "linear-gradient(160deg, rgba(94,145,153,0.5) 0%, rgba(143,210,215,0.2) 100%)",
               }}
             />
+            <span
+              className="absolute left-4 top-4 rounded-full px-3.5 py-1.5 font-display text-xs font-bold uppercase tracking-[0.08em] text-white shadow-[0_8px_20px_-6px_rgba(14,42,48,0.5)]"
+              style={{
+                background:
+                  project.tint === "teal"
+                    ? "linear-gradient(135deg, #166272 0%, #5e9199 100%)"
+                    : "linear-gradient(135deg, #5e9199 0%, #8fd2d7 100%)",
+              }}
+            >
+              {project.name}
+            </span>
           </motion.div>
         </div>
       </Reveal>
@@ -56,7 +67,7 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
           {project.name}
         </h3>
         <p className="mt-1 text-sm font-medium text-muted">{project.subtitle}</p>
-        <p className="mt-5 text-base leading-relaxed text-muted">{project.summary}</p>
+        <p className="mt-5 text-base leading-relaxed text-muted">{project.intro}</p>
 
         {project.tags && (
           <ul className="mt-5 flex flex-wrap gap-2">
@@ -73,7 +84,7 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
 
         <div className="mt-7">
           <Button href={`/projects/${project.id}`} variant="secondary">
-            {project.cta.label}
+            Explore {project.name}
           </Button>
         </div>
       </Reveal>

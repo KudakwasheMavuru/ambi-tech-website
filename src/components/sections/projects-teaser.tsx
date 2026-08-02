@@ -41,6 +41,17 @@ export function ProjectsTeaser() {
                           "linear-gradient(180deg, rgba(22,98,114,0.05) 0%, rgba(22,98,114,0.5) 100%)",
                       }}
                     />
+                    <span
+                      className="absolute left-4 top-4 rounded-full px-3 py-1.5 font-display text-xs font-bold uppercase tracking-[0.08em] text-white shadow-[0_8px_20px_-6px_rgba(14,42,48,0.5)] backdrop-blur-sm"
+                      style={{
+                        background:
+                          project.tint === "teal"
+                            ? "linear-gradient(135deg, #166272 0%, #5e9199 100%)"
+                            : "linear-gradient(135deg, #5e9199 0%, #8fd2d7 100%)",
+                      }}
+                    >
+                      {project.name}
+                    </span>
                   </div>
                   <div className="flex flex-1 flex-col p-6">
                     <div className="flex items-start justify-between gap-3">

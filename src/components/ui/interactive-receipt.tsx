@@ -11,7 +11,7 @@ export function InteractiveReceipt() {
   const reduceMotion = useReducedMotion();
   const [hovered, setHovered] = useState(false);
   const [clicked, setClicked] = useState(false);
-  const open = reduceMotion ? true : hovered || clicked;
+  const open = hovered || clicked;
 
   const rotX = useMotionValue(0);
   const rotY = useMotionValue(0);
@@ -54,7 +54,7 @@ export function InteractiveReceipt() {
         <motion.div
           className="h-full w-full"
           animate={open ? { rotate: 2, scale: 1.04 } : { rotate: -3, scale: 1 }}
-          transition={{ type: "spring", damping: 14, stiffness: 160 }}
+          transition={reduceMotion ? { duration: 0.01 } : { type: "spring", damping: 14, stiffness: 160 }}
         >
           <Image
             src="/images/receipt-curl.png"
@@ -71,7 +71,7 @@ export function InteractiveReceipt() {
         className="relative -mt-4 w-[58%] origin-top overflow-hidden rounded-b-lg border border-t-0 border-teal-mid/15 bg-white shadow-[0_18px_30px_-16px_rgba(14,42,48,0.35)]"
         initial={false}
         animate={open ? { scaleY: 1, opacity: 1 } : { scaleY: 0, opacity: 0 }}
-        transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
+        transition={reduceMotion ? { duration: 0.01 } : { duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
       >
         <div className="flex flex-col gap-1.5 px-3 py-4">
           {LINE_WIDTHS.map((w, i) => (

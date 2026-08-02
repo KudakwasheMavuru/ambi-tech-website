@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import { ShoppingBag, ReceiptText, Gift, PartyPopper, ArrowRight } from "lucide-react";
-import { projects, siteMeta } from "@/content/site";
+import { projects, siteMeta, appLinks } from "@/content/site";
+import { AppleIcon, GooglePlayIcon } from "@/components/ui/icons";
 import { Reveal, RevealGroup, RevealItem } from "@/components/ui/reveal";
 import { AnimatedCounter } from "@/components/ui/animated-counter";
 import { GlassCard } from "@/components/ui/glass-card";
@@ -12,6 +13,9 @@ import { Magnetic } from "@/components/ui/magnetic";
 import { ParticleField } from "@/components/ui/particle-field";
 import { PhoneShowcase } from "@/components/sections/phone-showcase";
 import { TengapromoGallery } from "@/components/sections/tengapromo-gallery";
+import { TengamaraGallery } from "@/components/sections/tengamara-gallery";
+import { NetworkMap } from "@/components/hero/network-map";
+import { OrbitGallery } from "@/components/ui/orbit-gallery";
 
 const flowIcons = [ShoppingBag, ReceiptText, Gift, PartyPopper];
 
@@ -87,33 +91,34 @@ export default async function ProjectDetailPage({
         </div>
       </section>
 
-      <div className="container-ambi relative -mt-10 sm:-mt-14">
-        <ScrollScale from={0.96}>
-          <div
-            className="relative aspect-[16/8] w-full overflow-hidden rounded-3xl shadow-[0_30px_70px_-30px_rgba(14,42,48,0.45)] sm:aspect-[16/6.5]"
-            style={{
-              background:
-                project.tint === "teal"
-                  ? "linear-gradient(160deg, #166272 0%, #5e9199 100%)"
-                  : "linear-gradient(160deg, #5e9199 0%, #8fd2d7 100%)",
-            }}
-          >
-            <Image src={project.image} alt="" fill sizes="100vw" className="object-cover" priority />
+      {project.id === "tengapromo" && (
+        <div className="container-ambi relative -mt-10 sm:-mt-14">
+          <ScrollScale from={0.96}>
             <div
-              aria-hidden="true"
-              className="absolute inset-0"
+              className="relative aspect-[16/8] w-full overflow-hidden rounded-3xl shadow-[0_30px_70px_-30px_rgba(14,42,48,0.45)] sm:aspect-[16/6.5]"
               style={{
-                background: "linear-gradient(180deg, transparent 55%, rgba(10,33,39,0.55) 100%)",
+                background:
+                  project.tint === "teal"
+                    ? "linear-gradient(160deg, #166272 0%, #5e9199 100%)"
+                    : "linear-gradient(160deg, #5e9199 0%, #8fd2d7 100%)",
               }}
-            />
-          </div>
-        </ScrollScale>
+            >
+              <Image src={project.image} alt="" fill sizes="100vw" className="object-cover" priority />
+              <div
+                aria-hidden="true"
+                className="absolute inset-0"
+                style={{
+                  background: "linear-gradient(180deg, transparent 55%, rgba(10,33,39,0.55) 100%)",
+                }}
+              />
+            </div>
+          </ScrollScale>
+        </div>
+      )}
 
-        {project.stats && (
-          <RevealGroup
-            className="relative z-10 mt-[-2.5rem] grid grid-cols-1 gap-4 px-4 sm:mt-[-3rem] sm:grid-cols-3 sm:px-8"
-            stagger={0.1}
-          >
+      {project.stats && (
+        <div className="container-ambi relative py-16 sm:py-20">
+          <RevealGroup className="grid grid-cols-1 gap-4 sm:grid-cols-3" stagger={0.1}>
             {project.stats.map((stat) => (
               <RevealItem key={stat.label}>
                 <GlassCard className="text-center">
@@ -132,10 +137,95 @@ export default async function ProjectDetailPage({
               </RevealItem>
             ))}
           </RevealGroup>
-        )}
-      </div>
+        </div>
+      )}
+
+      {project.id === "enoti" && (
+        <section className="pt-16 pb-0 sm:pt-20">
+          <div className="container-ambi">
+            <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-16">
+              <Reveal className="relative mx-auto aspect-square w-full max-w-sm">
+                <div
+                  className="relative h-full w-full overflow-hidden rounded-3xl shadow-[0_30px_70px_-30px_rgba(14,42,48,0.45)]"
+                  style={{ background: "linear-gradient(160deg, #166272 0%, #5e9199 100%)" }}
+                >
+                  <Image src={project.image} alt="The eNoti app" fill sizes="384px" className="object-cover" />
+                </div>
+              </Reveal>
+              <Reveal delay={0.1} className="text-center lg:text-left">
+                <h2 className="font-display text-2xl font-semibold tracking-tight text-ink sm:text-3xl">
+                  Get the eNoti app
+                </h2>
+                <p className="mt-4 max-w-md text-base leading-relaxed text-muted lg:mx-0 mx-auto">
+                  Live on the App Store and Google Play. Download it to start receiving VAT cashback on
+                  the receipts you&apos;re already collecting.
+                </p>
+                <div className="mt-7 flex flex-wrap justify-center gap-3 lg:justify-start">
+                  <a
+                    href={appLinks.appStore}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 rounded-xl border border-teal-mid/25 bg-white px-4 py-2.5 transition-colors hover:border-teal-deep/50"
+                  >
+                    <AppleIcon className="size-5 shrink-0 text-ink" />
+                    <span className="leading-tight">
+                      <span className="block text-[10px] text-muted">Download on the</span>
+                      <span className="block text-xs font-semibold text-ink">App Store</span>
+                    </span>
+                  </a>
+                  <a
+                    href={appLinks.playStore}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 rounded-xl border border-teal-mid/25 bg-white px-4 py-2.5 transition-colors hover:border-teal-deep/50"
+                  >
+                    <GooglePlayIcon className="size-5 shrink-0" />
+                    <span className="leading-tight">
+                      <span className="block text-[10px] text-muted">Get it on</span>
+                      <span className="block text-xs font-semibold text-ink">Google Play</span>
+                    </span>
+                  </a>
+                </div>
+              </Reveal>
+            </div>
+          </div>
+        </section>
+      )}
 
       {project.id === "enoti" && <PhoneShowcase />}
+
+      {project.id === "tengamara-na-tva" && (
+        <>
+          <TengamaraGallery />
+          <section className="relative overflow-hidden bg-surface-tint py-20 sm:py-24">
+            <div className="container-ambi">
+              <Reveal className="mx-auto max-w-xl text-center">
+                <span className="mb-3 inline-block text-xs font-semibold uppercase tracking-[0.16em] text-teal-mid">
+                  National reach
+                </span>
+                <h2 className="font-display text-2xl font-semibold tracking-tight text-ink sm:text-3xl">
+                  Built for a market this size
+                </h2>
+              </Reveal>
+
+              <Reveal
+                delay={0.15}
+                className="relative mt-14 flex h-[380px] items-center justify-center sm:h-[480px] lg:h-[560px]"
+              >
+                <OrbitGallery />
+                <div
+                  className="relative h-[240px] overflow-hidden rounded-3xl bg-white sm:h-[300px] lg:h-[340px]"
+                  style={{ aspectRatio: "1479 / 1726" }}
+                >
+                  <div className="absolute inset-3 sm:inset-5">
+                    <NetworkMap className="h-full w-full" />
+                  </div>
+                </div>
+              </Reveal>
+            </div>
+          </section>
+        </>
+      )}
 
       {project.sections?.map((section, i) => (
         <section
